@@ -20,7 +20,7 @@ namespace KatlaSport.DataAccess
             : base("DefaultConnection")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>(true));
-
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             // DatabaseLogger = databaseLogger;
 
             // if (DatabaseLogger != null)
