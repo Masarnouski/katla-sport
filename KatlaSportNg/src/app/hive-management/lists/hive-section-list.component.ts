@@ -15,10 +15,14 @@ export class HiveSectionListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private hiveService: HiveService
+    public router: Router,
+    private hiveService: HiveService,
   ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(p => {
+      this.hiveId = p['id'];
+      this.hiveService.getHiveSections(this.hiveId).subscribe(s => this.hiveSections = s);
+    })
   }
 }
