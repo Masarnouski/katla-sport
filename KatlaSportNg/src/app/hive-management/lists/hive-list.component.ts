@@ -7,6 +7,7 @@ import { HiveService } from '../services/hive.service';
   templateUrl: './hive-list.component.html',
   styleUrls: ['./hive-list.component.css']
 })
+
 export class HiveListComponent implements OnInit {
 
   hives: HiveListItem[];
@@ -27,5 +28,7 @@ export class HiveListComponent implements OnInit {
   }
 
   onRestore(hiveId: number) {
+    var hive = this.hives.find(h => h.id == hiveId);
+    this.hiveService.setHiveStatus(hiveId, false).subscribe(c => hive.isDeleted = false);
   }
 }
