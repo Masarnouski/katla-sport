@@ -19,7 +19,7 @@
           <th><div class="btn-group" role="group" aria-label="Delete group" *ngIf="!section.isDeleted" >
             <button type="button" class="btn btn-danger" (click)="onDelete(section.id)">Delete</button></div></th>
 
-          <th><div class="btn-group" role="group" aria-label="Delete group" *ngIf="section.isDeleted" >
+          <th><div class="btn-group" role="group" aria-label="unDelete group" *ngIf="section.isDeleted" >
             <button type="button" class="btn btn-primary" (click)="onUndelete(section.id)">Undelete</button></div></th>
     </tbody>
   </table>
