@@ -114,7 +114,7 @@ namespace KatlaSport.Services.HiveManagement
             }
 
             _context.Hives.Remove(dbHive);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         /// <inheritdoc/>
