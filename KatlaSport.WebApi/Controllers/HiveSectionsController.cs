@@ -57,8 +57,8 @@ namespace KatlaSport.WebApi.Controllers
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
         [HttpPost]
-        [Route("")]
-        [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new hive.")]
+        [Route("{hiveId:int:min(1)}")]
+        [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new hivesection.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
@@ -70,12 +70,12 @@ namespace KatlaSport.WebApi.Controllers
             }
 
             var section = await _hiveSectionService.CreateHiveSectionAsync(hiveId, createRequest);
-            var location = string.Format("/api/hives/sections/{0}", section.Id);
+            var location = string.Format("/api/sections/{0}", section.Id);
             return Created<HiveSection>(location, section);
         }
         [HttpPut]
         [Route("{id:int:min(1)}")]
-        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed hive.")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed hivesection.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
@@ -93,7 +93,7 @@ namespace KatlaSport.WebApi.Controllers
 
         [HttpDelete]
         [Route("{id:int:min(1)}")]
-        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hive.")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hivesection.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
